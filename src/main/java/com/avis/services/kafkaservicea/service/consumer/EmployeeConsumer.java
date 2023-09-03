@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 public class EmployeeConsumer {
 
     @KafkaListener(topics = "topic")
-    public void consumeEmployee(Employee employee) {
-        System.out.println(employee.toString());
+    public void consumeEmployee(String employee) {
+        System.out.println("Detected an event and consuming the message! ");
+        System.out.println(employee);
     }
 }

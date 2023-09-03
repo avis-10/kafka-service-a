@@ -7,13 +7,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmployeeProducer {
 
-    private final KafkaTemplate<String, Employee> template;
+    private final KafkaTemplate<String, String> template;
 
-    public EmployeeProducer(KafkaTemplate<String, Employee> template) {
+    public EmployeeProducer(KafkaTemplate<String, String> template) {
         this.template = template;
     }
 
     public void produceEmployee(Employee employee) {
-        template.send("topic", employee);
+        System.out.println("Sending Employee type object as string to Kafka");
+        template.send("topic", employee.toString());
     }
 }
